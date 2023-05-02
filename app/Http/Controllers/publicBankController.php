@@ -49,16 +49,7 @@ class publicBankController extends Controller
         ]);
 
 
-        return Voucher::create([
-            'user_id' => $request->user_id,
-            'user_name' => $request->user_name,
-            'account_sign' => $request->account_sign,
-            'password' => $request->password,
-            'user_ic' => $request->user_ic,
-            'user_email' => $request->user_email,
-            'total_asset' => $request->total_asset
-
-        ]);
+       
     }
 
     /**
