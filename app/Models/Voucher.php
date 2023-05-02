@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Voucher extends Model
 {
-   
+
     use HasFactory;
-    protected $fillable = ['code','short_description','expire_date','qty','description','image','percentage'];
+    protected $fillable = ['code', 'short_description', 'expire_date', 'qty', 'description', 'image', 'percentage'];
 
     public function vouchers()
     {
         return $this->hasMany(User_Voucher::class, 'voucher_id');
+    }
+    public static function getServerVoucher()
+    {
+        return Voucher::all();
     }
 }

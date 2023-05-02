@@ -13,6 +13,7 @@ class GiftController extends Controller
         return Gift::all();
     }
 
+    //update a
     public function update(Request $request, $id)
     {
         $gift = Gift::find($id);
