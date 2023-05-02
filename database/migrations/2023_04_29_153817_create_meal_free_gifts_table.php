@@ -13,14 +13,14 @@ class CreateMealFreeGiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('meal_free_gifts', function (Blueprint $table) {
+        Schema::create('meal__free__gifts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('meal_id');
             $table->unsignedBigInteger('freegift_id');
 
             $table->foreign('freegift_id')
             ->references('id')
-            ->on('free_gifts')
+            ->on('free__gifts')
             ->onDelete('cascade');
           
         });
@@ -33,6 +33,6 @@ class CreateMealFreeGiftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meal_free_gifts');
+        Schema::dropIfExists('meal__free__gifts');
     }
 }

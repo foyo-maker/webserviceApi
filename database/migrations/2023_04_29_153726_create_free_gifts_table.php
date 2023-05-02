@@ -13,7 +13,7 @@ class CreateFreeGiftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('free_gifts', function (Blueprint $table) {
+        Schema::create('free__gifts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('qty');
@@ -32,6 +32,6 @@ class CreateFreeGiftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('free_gifts');
+        Schema::dropIfExists('free__gifts');
     }
 }

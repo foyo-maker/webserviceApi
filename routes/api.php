@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\FreeGiftController;
+use App\Http\Controllers\MealFreeGiftController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\UserVoucherController;
 
@@ -47,7 +48,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 //testing
 Route::get('/freegifts', [FreeGiftController::class, 'index']);
 Route::post('/freegifts', [FreeGiftController::class, 'store']);
+Route::get('/freegifts/{id}', [FreeGiftController::class, 'show']);
+Route::put('/freegifts/{id}', [FreeGiftController::class, 'update']);
+Route::delete('/freegifts/{id}', [FreeGiftController::class, 'destroy']);
 
+Route::get('/mealfreegifts', [MealFreeGiftController::class, 'index']);
+Route::post('/mealfreegifts', [MealFreeGiftController::class, 'store']);
+Route::get('/mealfreegifts/{id}', [MealFreeGiftController::class, 'show']);
+Route::put('/mealfreegifts/{id}', [MealFreeGiftController::class, 'update']);
+Route::delete('/mealfreegifts/{id}', [MealFreeGiftController::class, 'destroy']);
 
 Route::post('/generateToken', [AuthController::class, 'generateToken']);
 

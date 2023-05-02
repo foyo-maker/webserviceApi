@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Free_Gift;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FreeGiftController extends Controller
 {
@@ -11,25 +12,14 @@ class FreeGiftController extends Controller
 
     public function index()
     {
-       $freeGifts= free_gift::all();
+       return free_gift::all();
 
-       if($freeGifts->count()>0){
-        return response()->json([
-            'status'=>200,
-            'freeGifts'=>$freeGifts
-        ],200);
-       }else{
-        return response()->json([
-            'status'=>404,
-            'message'=>'No Records Found'
-        ],404);
-       }
     }
 
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
-            'name' => 'required|max:100',
-            'qty'=> 'required|numeric',
+            'name' => 'required',
+            'qty'=> 'required',
             'description'=>'required',
             'image'=>'required',
             'status'=>'required',
@@ -55,6 +45,18 @@ class FreeGiftController extends Controller
     public function show($id){
         $freeGift = free_gift::find($id);
         return $freeGift;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $freeGift = free_gift::find($id);
+        $freeGift->update($request->all());
+        return $freeGift;
+    }
+
+    public function destroy($id){
+        $freeGift = free_gift::find($id);
+        return $freeGift->delete();
     }
 
     
