@@ -9,5 +9,9 @@ class Gift extends Model
 {
     use HasFactory;
     protected $fillable = ['product_name','product_qty','memberPoint_cost','product_image'];
-    
+
+    public static function getServerItem()
+    {
+        return Gift::all();
+    }
 }

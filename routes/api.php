@@ -9,7 +9,8 @@ use App\Http\Controllers\FreeGiftController;
 use App\Http\Controllers\MealFreeGiftController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\UserVoucherController;
-
+use App\Http\Controllers\publicBankController;
+use App\Http\Controllers\VoucherWebServiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,14 +26,9 @@ use App\Http\Controllers\UserVoucherController;
 //protected route
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    //A route post to web service about storing a client must be protected 
     Route::post('/users', [AuthController::class, 'store']);
-    //public route
-    //Route::resource('vouchers',VoucherController::class);
     Route::get('/voucherDetail', [UserVoucherController::class, 'index']);
-    //web servcie
-    Route::post('/voucherDetail', [UserVoucherController::class, 'store']);
-    //web servcie
+    Route::post('/userOwnVoucher', [UserVoucherController::class, 'store']);
     Route::get('/voucherDetail/{id}', [UserVoucherController::class, 'show']);
     Route::put('/voucherDetail/{id}', [UserVoucherController::class, 'update']);
     Route::get('/users', [AuthController::class, 'index']);
@@ -45,7 +41,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 //Route::resource('vouchers',VoucherController::class);
 
-//testing
 Route::get('/freegifts', [FreeGiftController::class, 'index']);
 Route::post('/freegifts', [FreeGiftController::class, 'store']);
 Route::get('/freegifts/{id}', [FreeGiftController::class, 'show']);
@@ -60,13 +55,24 @@ Route::delete('/mealfreegifts/{id}', [MealFreeGiftController::class, 'destroy'])
 
 Route::post('/generateToken', [AuthController::class, 'generateToken']);
 
-
-
-
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/vouchers', [VoucherController::class, 'index']);
 Route::get('/vouchers/{id}', [VoucherController::class, 'show']);
+
+Route::post('/generateToken', [AuthController::class, 'generateToken']);
+
+Route::get('/publicBank', [publicBankController::class, 'index']);
+Route::get('/publicBank/{id}', [publicBankController::class, 'show']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/voucher', [VoucherWebServiceController::class, 'index']);
+Route::get('/vouchers/{id}', [VoucherWebServiceController::class, 'show']);
+
+
+Route::get('/vouchers', [VoucherController::class, 'index']);
+Route::get('/vouchers/search/{name}', [VoucherWebServiceController::class, 'search']);
 
 
 

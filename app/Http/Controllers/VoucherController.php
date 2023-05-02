@@ -12,7 +12,7 @@ use GuzzleHttp\Exception\RequestException;
 class VoucherController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of Pthe resource.
      *
      * @return \Illuminate\Http\Response
      */
