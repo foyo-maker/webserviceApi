@@ -44,6 +44,7 @@ Route::post('/generateToken', [AuthController::class, 'generateToken']);
 
 Route::get('/publicBank', [publicBankController::class, 'index']);
 Route::get('/publicBank/{id}', [publicBankController::class, 'show']);
+Route::put('/publicBank/{id}', [publicBankController::class, 'update']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

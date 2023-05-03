@@ -49,7 +49,6 @@ class publicBankController extends Controller
         ]);
 
 
-       
     }
 
     /**
